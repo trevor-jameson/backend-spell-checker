@@ -1,6 +1,6 @@
 # Welcome to Spell Checker - A spell tracker for busy geeks
 
-Hey Nerd! This repo is my final project at the Flatiron School's Web Development Immersive program. Dig it. Like it. Share it.
+Hey Nerd! This repo is my final project at the Flatiron School's Web Development Immersive program. Dig it? Share it.
 
 
 ## Legal
