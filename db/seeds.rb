@@ -15,6 +15,7 @@ def make_demo_users
   @user2 = User.create(username: "NoImDungeonDan", firstname: "Danny", lastname: "Darko", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1519159554333-b9f467f9a7d7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b3d40679c8c2002845a05699535083cd&auto=format&fit=crop&w=800&q=60")
   @user3 = User.create(username: "xXmarksTheSpotXx", firstname: "Marcos", lastname: "Lopez", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1525219659402-5d77cda79c06?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b09276c55e1b12c0d8aca68855c5a040&auto=format&fit=crop&w=800&q=60")
   @user4 = User.create(username: "justschwick102", firstname: "John", lastname: "Schwick", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1523586044048-b7d32d5da502?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=73f45ea50b44184d81a2de2e0bd67370&auto=format&fit=crop&w=800&q=60")
+  @user5 = User.create(username: "test", firstname: "Jane", lastname: "Doe", password: "test", pic: "https://images.unsplash.com/photo-1504352244848-d22c20c5a602?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=44c1e98af80c1d2625cc66c7f42f0fc6&auto=format&fit=crop&w=500&q=60")
 end
 
 ##### Seed demo characters to the DB #####

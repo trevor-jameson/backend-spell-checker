@@ -1,3 +1,4 @@
+require 'byebug'
 class ApplicationController < ActionController::API
   # Calls entire auth method chain prior to implementing any other method in App
   before_action :authorized
@@ -6,7 +7,7 @@ class ApplicationController < ActionController::API
 # then delivers to frontend
 def encode_token(payload)
   # Secret environment variable is found in config/application.yml
-  JWT.encode(payload, ENV["TBDFIGARO"])
+  JWT.encode(payload, ENV["SECRET_KEY"])
 end
 
 # Checks whether Auth header containing JWT exists and returns value if so
@@ -19,7 +20,7 @@ def decoded_token
   if auth_header
     # Removed token = auth_header.split(' ')[1] here
     begin
-      JWT.decode(auth_header, ENV["TBDFIGARO"], true, algorithm: 'HS256')
+      JWT.decode(auth_header, ENV["SECRET_KEY"], true, algorithm: 'HS256')
     rescue JWT::DecodeError
       nil
     end
