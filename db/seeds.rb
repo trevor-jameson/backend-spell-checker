@@ -4,14 +4,30 @@ require 'byebug'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-Spell.destroy_all
+
+# Spell.destroy_all
 Char.destroy_all
 User.destroy_all
 
+##### Seed demo users to the DB #####
+def make_demo_users
+  @user1 = User.create(username: "ImDungeonDan", firstname: "Daniel", lastname: "Esperanto", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1514036783265-fba9577fc473?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72b5b878461033230d57ba8b7f4315ee&auto=format&fit=crop&w=800&q=60")
+  @user2 = User.create(username: "NoImDungeonDan", firstname: "Danny", lastname: "Darko", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1519159554333-b9f467f9a7d7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b3d40679c8c2002845a05699535083cd&auto=format&fit=crop&w=800&q=60")
+  @user3 = User.create(username: "xXmarksTheSpotXx", firstname: "Marcos", lastname: "Lopez", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1525219659402-5d77cda79c06?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b09276c55e1b12c0d8aca68855c5a040&auto=format&fit=crop&w=800&q=60")
+  @user4 = User.create(username: "justschwick102", firstname: "John", lastname: "Schwick", password: "issecurepassword", pic: "https://images.unsplash.com/photo-1523586044048-b7d32d5da502?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=73f45ea50b44184d81a2de2e0bd67370&auto=format&fit=crop&w=800&q=60")
+end
+
+##### Seed demo characters to the DB #####
+def make_demo_chars
+  @char1 = Char.create(name: "Dirigible Wispus", user: @user1, klass: "Wizard", lvl: 13, school: "Abjuration", notes: "Big belly. Big brain. Little nubby fingers.")
+  @char2 = Char.create(name: "Ilashi Dvorak", user: @user1, klass: "Sorceror", lvl: 12, school: "Fancy", notes: "Has nothing to say to commoners such as you.")
+  @char3 = Char.create(name: "Iggy", user: @user2, klass: "Druid", lvl: 5, school: "Land", notes: "Is deaf in all animal forms. Thinks human are noisy anyways and does her best to avoid them.")
+  @char4 = Char.create(name: "Vern", user: @user3, klass: "Bard", lvl: 4, school: "Lalala cant hear you", notes: "Wants things his way, and wants them now.")
+  @char5 = Char.create(name: "Thok Hogswaddle", user: @user4, klass: "Paladin", lvl: 5, school: "did not attend", notes: "Thok is pure of heart and dumb of mind")
+end
+
+
+# Call dnd api and seed spells to DB
 def load_spells
   counter = 1
   319.times do
@@ -66,7 +82,7 @@ def make_spell(counter)
       concentration: check_bool(json['concentration']),
       classes: select_classes(json['classes']),
       castingtime: json['casting_time'],
-      level: json['level'],
+      lvl: json['level'],
       school: json['school']['name'],
       url: json['url'],
     )
@@ -76,4 +92,6 @@ def make_spell(counter)
   end
 end
 
-load_spells
+make_demo_users
+make_demo_chars
+# load_spells

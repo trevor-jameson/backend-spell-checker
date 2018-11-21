@@ -15,20 +15,20 @@ ActiveRecord::Schema.define(version: 2018_11_18_205417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "char_spells", force: :cascade do |t|
+  create_table "chars", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.string "klass"
+    t.integer "lvl"
+    t.string "school"
+    t.text "notes"
+  end
+
+  create_table "known_spells", force: :cascade do |t|
     t.integer "spell_id"
     t.integer "char_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "chars", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
-    t.string "class"
-    t.integer "lvl"
-    t.string "school"
-    t.text "notes"
   end
 
   create_table "spells", force: :cascade do |t|
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_11_18_205417) do
     t.string "duration"
     t.string "castingtime"
     t.string "material"
-    t.integer "level"
+    t.integer "lvl"
     t.string "school"
     t.string "classes"
     t.string "url"

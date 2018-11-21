@@ -14,7 +14,7 @@ class CreateSpells < ActiveRecord::Migration[5.2]
       t.string :duration
       t.string :castingtime
       t.string :material
-      t.integer :level
+      t.integer :lvl
       t.string :school
       t.string :classes
       t.string :url
