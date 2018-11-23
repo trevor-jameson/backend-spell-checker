@@ -1,11 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   # Will check that json token is provided in header on all methods but create user
-  skip_before_action :authorized, only: [:create]
-
-  # Return user profile info
-  def profile
-    render json: { user: UserSerializer.new(current_user) }, status: :accepted
-  end
+  # skip_before_action :authorized, only: [:create]
 
   def create
     @user = User.create(new_user_params)
