@@ -17,15 +17,6 @@ def create
   end
 end
 
-# User logout
-def destroy
-  # :authorized method before action will validate the user's token.
-  @user = User.find(current_user)
-
-  # How should the JWT be revoked?
-  render json: { message: 'You have been logged out successfully', jwt: token}, status: :accepted
-end
-
 private
 
 def user_login_params

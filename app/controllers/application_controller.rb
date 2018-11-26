@@ -6,8 +6,14 @@ class ApplicationController < ActionController::API
 # Intercepts the user login response from DB and encodes the payload
 # then delivers to frontend
 def encode_token(payload)
-  # Secret environment variable is found in config/application.yml
-  JWT.encode(payload, ENV["SECRET_KEY"])
+  # Secret environment variable is found in config/application.yml'
+
+  # Sets the expiration time of jwt as 6 hours from the current time
+  expTime = 6.hours.from_now.to_i
+  exp_payload = payload
+  exp_payload['exp'] = expTime
+
+  JWT.encode(exp_payload, ENV["SECRET_KEY"])
 end
 
 # Checks whether Auth header containing JWT exists and returns value if so
@@ -22,6 +28,8 @@ def decoded_token
     begin
       JWT.decode(auth_header, ENV["SECRET_KEY"], true, algorithm: 'HS256')
     rescue JWT::DecodeError
+      nil
+    rescue JWT::ExpiredSignature
       nil
     end
   end
