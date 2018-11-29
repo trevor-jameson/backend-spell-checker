@@ -18,9 +18,5 @@ private
   def new_user_params
     params.require(:user).permit(:username, :password, :firstname, :lastname, :pic)
   end
-
-  def user_params
-    params.require(:user).permit(:username, :password)
-  end
   # End of Users Controller
 end
