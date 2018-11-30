@@ -15,7 +15,6 @@ class Api::V1::CharSerializer < ActiveModel::Serializer
     # Association error. Maybe has_many is not expecting an arr
     # TODO: REDO WILDLY INNEFFICIENT QUERY
     ck_matches.map do |ck|
-      byebug
       KlassLevel.all.find do |kl|
         kl.level == ck[:lvl] && kl.klass_id == ck[:klass]
       end
