@@ -5,6 +5,7 @@ class Char < ApplicationRecord
   has_many :spells, through: :known_spells
   has_many :char_klasses
   has_many :klasses, through: :char_klasses
+  has_many :klass_levels, through: :klasses
 
   # VALIDATIONS
   # Checkbox from front-end must be true. However, this attr will not be stored in backend
