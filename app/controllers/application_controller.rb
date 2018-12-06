@@ -1,4 +1,3 @@
-require 'byebug'
 class ApplicationController < ActionController::API
   # Calls entire auth method chain prior to implementing any other method in App
   # before_action :authorized

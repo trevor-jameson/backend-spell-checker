@@ -1,6 +1,5 @@
 require 'rest-client'
 require 'json'
-require 'byebug'
 require_relative './loading_helper.rb'
 require_relative './making_helper.rb'
 # This file should contain all the record creation needed to seed the database with its default values.
