@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   # Calls entire auth method chain prior to implementing any other method in App
-  # before_action :authorized
+  before_action :authorized
 
 # Intercepts the user login response from DB and encodes the payload
 # then delivers to frontend

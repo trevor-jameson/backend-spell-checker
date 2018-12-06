@@ -7,8 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*'
-    # origins ['http://localhost:3000', 'http://localhost:3001', 'https://git.heroku.com/spell-checker-rpg.git']
+    origins ['http://localhost:3000', 'http://localhost:3001', 'https://spell-checker-rpg.herokuapp.com']
 
     resource '*',
       headers: :any,
