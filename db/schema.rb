@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2018_11_28_234122) do
     t.string "material"
     t.integer "lvl"
     t.string "school"
-    t.string "classes"
+    t.string "klasses"
     t.string "url"
   end
 

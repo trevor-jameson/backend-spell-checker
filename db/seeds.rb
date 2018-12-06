@@ -34,10 +34,10 @@ require_relative './making_helper.rb'
 
 
 # Users and characters must be created first, other tables depend on them
-# make_demo_users
-# make_demo_chars
-# make_demo_abilities
-# load_spells
-# make_demo_known_spells
-# load_klasses
-# make_demo_char_klasses
+make_demo_users
+make_demo_chars
+make_demo_abilities
+load_spells
+make_demo_known_spells
+load_klasses
+make_demo_char_klasses

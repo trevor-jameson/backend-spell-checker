@@ -16,7 +16,7 @@ class CreateSpells < ActiveRecord::Migration[5.2]
       t.string :material
       t.integer :lvl
       t.string :school
-      t.string :classes
+      t.string :klasses
       t.string :url
     end
   end

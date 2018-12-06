@@ -55,7 +55,7 @@ def make_spell(counter)
       ritual: check_bool(json['ritual']),
       duration: json['duration'],
       concentration: check_bool(json['concentration']),
-      classes: select_classes(json['classes']),
+      klasses: select_classes(json['classes']),
       castingtime: json['casting_time'],
       lvl: json['level'],
       school: json['school']['name'],
@@ -80,9 +80,11 @@ end
 def make_demo_chars
   @char1 = Char.create(name: "Dirigible Wispus", health: 10, user: User.find(1),  notes: "Big belly. Big brain. Little nubby fingers.")
   @char2 = Char.create(name: "Ilashi Dvorak", health: 15, user: User.find(2), notes: "Has nothing to say to commoners such as you.")
-  @char3 = Char.create(name: "Iggy", health: 44, user: User.find(3), notes: "Is deaf in all animal forms. Thinks human are noisy anyways and does her best to avoid them.")
-  @char4 = Char.create(name: "Vern", health: 25, user: User.find(5), notes: "Wants things his way, and wants them now.")
-  @char5 = Char.create(name: "Thok Hogswaddle", health: 30, user: User.find(5), notes: "Thok is pure of heart and dumb of mind")
+  @char3 = Char.create(name: "Iggy", health: 44, user: User.find(5), notes: "Is deaf in all animal forms. Thinks human are noisy anyways and does her best to avoid them.")
+  @char4 = Char.create(name: "Firak Slowflame", health: 25, user: User.find(5), notes: "Patient. Poetic. Wise beyond his 15 years")
+  @char5 = Char.create(name: "Biggie Hogswaddle", health: 30, user: User.find(5), notes: "Bigs is pure of heart and dumb of mind")
+  @char6 = Char.create(name: "Rogar", health: 86, user: User.find(5), notes: "Huge friendly scaly hungry lizard person")
+  @char7 = Char.create(name: "Ash Ketchum", health: 48, user: User.find(5), notes: "Gotta catch em all!")
 end
 
 # Create demo abilities, assigned to characters
@@ -105,6 +107,10 @@ def make_demo_known_spells
   @ks8 = KnownSpell.create(char: Char.find(4), spell: Spell.find(12))
   @ks9 = KnownSpell.create(char: Char.find(5), spell: Spell.find(18))
   @ks10 = KnownSpell.create(char: Char.find(5), spell: Spell.find(56))
+  @ks11 = KnownSpell.create(char: Char.find(6), spell: Spell.find(319))
+  @ks12 = KnownSpell.create(char: Char.find(6), spell: Spell.find(88))
+  @ks13 = KnownSpell.create(char: Char.find(7), spell: Spell.find(72))
+  @ks14 = KnownSpell.create(char: Char.find(7), spell: Spell.find(100))
 end
 
 def make_demo_char_klasses
@@ -113,9 +119,8 @@ def make_demo_char_klasses
   @ck3 = CharKlass.create(char: Char.find(3), klass: Klass.find(3), klass_lvl: 5)
   @ck4 = CharKlass.create(char: Char.find(4), klass: Klass.find(4), klass_lvl: 5)
   @ck5 = CharKlass.create(char: Char.find(5), klass: Klass.find(12), klass_lvl: 7)
-  @ck6 = CharKlass.create(char: Char.find(5), klass: Klass.find(7), klass_lvl: 10)
-  @ck7 = CharKlass.create(char: Char.find(4), klass: Klass.find(10), klass_lvl: 9)
-
+  @ck1 = CharKlass.create(char: Char.find(6), klass: Klass.find(1), klass_lvl: 4)
+  @ck2 = CharKlass.create(char: Char.find(7), klass: Klass.find(2), klass_lvl: 15)
 end
 
 # Call and create a klass, then call and create each level for that klass
