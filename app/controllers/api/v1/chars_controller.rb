@@ -29,20 +29,31 @@ class Api::V1::CharsController < ApplicationController
   #   }
   # }
   def index
+    byebug
     @chars = Char.where(user: current_user)
-    render json: @chars
+    render json: {chars: @chars, sheet: Char.first.char_sheet[0]}
   end
 
     def create
       # How will current_user work here?
-      # @char = Char.create(new_user_params, user: current_user)
-      # @ab_set = AbilitiesSet.create(ab_params, char: @char)
-      # @char_klass = CharKlass.create(char: @char, klass: Klass.find_by(name: params[:char][:klass]))
-      # params[:spells].each do |spell|
-      #   KnownSpell.create(char: @char, spell_id: spell)
-      # end
+      @char = Char.create(new_user_params, user: current_user)
+      @ab_set = AbilitiesSet.create(ab_params, char: @char)
+      @char_klass = CharKlass.create(char: @char, klass_lvl: char_klass_params[:level] ,klass: Klass.find_by(name: char_klass_params[:char][:class]))
     end
 
+private
 
+  # Cannot have unpermitted params after required key
+  def new_char_params
+    params.require(:char).permit(:name, :pic, :health, :notes)
+  end
+
+  def ab_params
+    params.require(:char).permit(:abilities)
+  end
+
+  def char_klass_params
+    params.require(:char).permit(:class, :level)
+  end
 
 end

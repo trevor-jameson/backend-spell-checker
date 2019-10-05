@@ -33,10 +33,17 @@ require_relative './making_helper.rb'
 
 
 # Users and characters must be created first, other tables depend on them
-make_demo_users
-make_demo_chars
-make_demo_abilities
-load_spells
-make_demo_known_spells
-load_klasses
-make_demo_char_klasses
+# make_demo_users
+# make_demo_chars
+# make_demo_abilities
+# load_spells
+# make_demo_known_spells
+# load_klasses
+# make_demo_char_klasses
+
+char = Char.first
+char.char_sheets.attach(
+    io: File.open('./public/char_sheets/db_destroyer.jpg'),
+    filename: 'db_destroyer.jpg',
+    content_type: 'application/jpg'
+)

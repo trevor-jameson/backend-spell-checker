@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 resources '/spells', to: 'api/v1/spells#index'
+
+post '/characters', to: 'api/v1/chars#create'
 resources '/characters', to: 'api/v1/chars#index'
 resources '/login', to: 'auth#create'
 resources '/create-user', to: 'api/v1/users#create'
