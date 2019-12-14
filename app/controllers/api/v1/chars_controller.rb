@@ -1,5 +1,45 @@
 class Api::V1::CharsController < ApplicationController
 
+  def index
+    @chars = Char.where(user: current_user)
+    if (chars.empty?)
+      render json: {message: 'No characters found :('}
+    else
+      render json: {chars: @chars, sheets: sheets}
+    end
+  end
+
+    def create
+      # How will current_user work here?
+      @char = Char.create(new_user_params, user: current_user)
+      @ab_set = AbilitiesSet.create(ab_params, char: @char)
+      @char_klass = CharKlass.create(char: @char, klass_lvl: char_klass_params[:level] ,klass: Klass.find_by(name: char_klass_params[:char][:class]))
+    end
+
+private
+
+  # Cannot have unpermitted params after required key
+  def new_char_params
+    params.require(:char).permit(:name, :pic, :health, :notes)
+  end
+
+  def ab_params
+    params.require(:char).permit(:abilities)
+  end
+
+  def char_klass_params
+    params.require(:char).permit(:class, :level)
+  end
+
+  # Returns a list of character sheet data and url for each of a user's characters
+  # sheets = [{char_data, sheet_data, sheet_url}]
+  def sheets
+    sheets = 
+    byebug
+  end
+
+end
+
   # User_id sent seperately in JWT
   # form = {
   #   char: {
@@ -28,32 +68,3 @@ class Api::V1::CharsController < ApplicationController
   #     }
   #   }
   # }
-  def index
-    byebug
-    @chars = Char.where(user: current_user)
-    render json: {chars: @chars, sheet: Char.first.char_sheet[0]}
-  end
-
-    def create
-      # How will current_user work here?
-      @char = Char.create(new_user_params, user: current_user)
-      @ab_set = AbilitiesSet.create(ab_params, char: @char)
-      @char_klass = CharKlass.create(char: @char, klass_lvl: char_klass_params[:level] ,klass: Klass.find_by(name: char_klass_params[:char][:class]))
-    end
-
-private
-
-  # Cannot have unpermitted params after required key
-  def new_char_params
-    params.require(:char).permit(:name, :pic, :health, :notes)
-  end
-
-  def ab_params
-    params.require(:char).permit(:abilities)
-  end
-
-  def char_klass_params
-    params.require(:char).permit(:class, :level)
-  end
-
-end

@@ -42,8 +42,8 @@ require_relative './making_helper.rb'
 # make_demo_char_klasses
 
 char = Char.first
-char.char_sheets.attach(
-    io: File.open('./public/char_sheets/db_destroyer.jpg'),
+char.sheets.attach(
+    io: File.open('./public/sheets/db_destroyer.jpg'),
     filename: 'db_destroyer.jpg',
     content_type: 'application/jpg'
 )

@@ -1,5 +1,5 @@
 class Char < ApplicationRecord
-  has_many_attached :char_sheets
+  has_many_attached :sheets
   belongs_to :user, dependent: :delete
   has_one :abilities_set
   has_many :known_spells
