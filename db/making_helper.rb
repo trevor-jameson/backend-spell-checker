@@ -80,7 +80,7 @@ end
 def make_demo_chars
   @char1 = Char.create(name: "Dirigible Wispus", health: 10, user: User.find(1),  notes: "Big belly. Big brain. Little nubby fingers.")
   @char2 = Char.create(name: "Ilashi Dvorak", health: 15, user: User.find(2), notes: "Has nothing to say to commoners such as you.")
-  @char3 = Char.create(name: "Iggy", health: 44, user: User.find(5), notes: "Is deaf in all animal forms. Thinks human are noisy anyways and does her best to avoid them.")
+  @char3 = Char.create(name: "Iggy", health: 44, user: User.find(5), notes: "Is deaf in all animal forms. Thinks humans are noisy anyways and does her best to avoid them.")
   @char4 = Char.create(name: "Firak Slowflame", health: 25, user: User.find(5), notes: "Patient. Poetic. Wise beyond his 15 years")
   @char5 = Char.create(name: "Biggie Hogswaddle", health: 30, user: User.find(5), notes: "Bigs is pure of heart and dumb of mind")
   @char6 = Char.create(name: "Rogar", health: 86, user: User.find(5), notes: "Huge friendly scaly hungry lizard person")
