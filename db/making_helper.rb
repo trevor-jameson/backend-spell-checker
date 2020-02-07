@@ -37,10 +37,10 @@ end
 ##### METHODS FOR CALLING APIS #####
 
 # Call and create a spell
-def make_spell(counter)
-  response = RestClient.get('http://dnd5eapi.co/api/spells/' + counter.to_s)
+def make_spell(spell_hash)
+  response = RestClient.get('http://dnd5eapi.co' + spell_hash['url'])
   json = JSON.parse(response)
-
+  
   if json != nil
     spell = Spell.new(
       api_id: json['_id'],
@@ -124,8 +124,8 @@ def make_demo_char_klasses
 end
 
 # Call and create a klass, then call and create each level for that klass
-def make_klass(counter)
-  response = RestClient.get('http://dnd5eapi.co/api/classes/' + counter.to_s)
+def make_klass(klass_hash)
+  response = RestClient.get('http://dnd5eapi.co' + klass_hash['url'])
   json = JSON.parse(response)
 
   if json != nil
@@ -143,7 +143,7 @@ end
 
 # Call and create a klass_level
 def make_klass_level(klass_name, level_counter)
-  response = RestClient.get('http://dnd5eapi.co/api/classes/' + klass_name.downcase + '/level/' + level_counter.to_s)
+  response = RestClient.get('http://dnd5eapi.co/api/classes/' + klass_name.downcase + '/levels/' + level_counter.to_s)
   json = JSON.parse(response)
 
   if json != nil

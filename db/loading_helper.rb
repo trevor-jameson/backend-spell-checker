@@ -1,10 +1,11 @@
 require_relative './making_helper.rb'
 
 def load_klasses
-  counter = 1
-  12.times do
-    make_klass(counter)
-    counter += 1
+  all_klasses = RestClient.get('http://dnd5eapi.co/api/classes')
+  parsed_klasses= JSON.parse(all_klasses)
+  
+  parsed_klasses['results'].each do |klass|
+    make_klass(klass)
   end
 end
 
@@ -18,13 +19,11 @@ end
 
 # Call dnd api and seed spells to DB
 def load_spells
-  response = RestClient.get('http://dnd5eapi.co/api/spells')
-  total_spells = JSON.parse(response)['count']
-  counter = 1
-
+  all_spells = RestClient.get('http://dnd5eapi.co/api/spells')
+  parsed_spells = JSON.parse(all_spells)
+  
   # Make call for each spell's data times the count var in above return
-  total_spells.times do
-    make_spell(counter)
-    counter += 1
+  parsed_spells['results'].each do |spell_hash|
+    make_spell(spell_hash)
   end
 end
