@@ -9,6 +9,8 @@ gem 'rest-client'
 gem 'json'
 gem 'jwt'
 gem 'figaro'
+# Nokogiri versioning to prevent command injection vulnerability
+gem "nokogiri", ">= 1.10.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
