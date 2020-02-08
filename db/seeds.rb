@@ -16,19 +16,19 @@ require_relative './making_helper.rb'
 # 6) Load all klass data from 5eAPI
 # 6a) Foreach klass, iterate through all 20 levels, creating klass_level
 # 7) Load all demo chars
-#
+
 
 
 ## The order of destruction must be maintained to avoid violating the foreign key dependencies
 # NOTE: These destroyers could be moved to the top of the making_helper methods once DB testing is completed
-# KlassLevel.destroy_all
-# AbilitiesSet.destroy_all
-# Klass.destroy_all
-# CharKlass.destroy_all
-# KnownSpell.destroy_all
-# Spell.destroy_all
-# Char.destroy_all
-# User.destroy_all
+KlassLevel.destroy_all
+CharKlass.destroy_all
+Klass.destroy_all
+Spell.destroy_all
+KnownSpell.destroy_all
+Char.destroy_all
+AbilitiesSet.destroy_all
+User.destroy_all
 
 
 

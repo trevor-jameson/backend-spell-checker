@@ -1,9 +1,9 @@
 class Char < ApplicationRecord
-  belongs_to :user, dependent: :delete
-  has_one :abilities_set
-  has_many :known_spells
+  belongs_to :user, dependent: :destroy
+  has_one :abilities_set, dependent: :destroy
+  has_many :known_spells, dependent: :destroy
   has_many :spells, through: :known_spells
-  has_many :char_klasses
+  has_many :char_klasses, dependent: :destroy
   has_many :klasses, through: :char_klasses
   has_many :klass_levels, through: :klasses do
     def belongs(char)
