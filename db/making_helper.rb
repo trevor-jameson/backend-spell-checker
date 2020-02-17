@@ -70,49 +70,51 @@ end
 
 # Create demo characters, assigned to users
 def make_demo_chars
-  @char1 = Char.create(name: "Dirigible Wispus", health: 10, user: User.find(1),  notes: "Big belly. Big brain. Little nubby fingers.")
-  @char2 = Char.create(name: "Ilashi Dvorak", health: 15, user: User.find(2), notes: "Has nothing to say to commoners such as you.")
-  @char3 = Char.create(name: "Iggy", health: 44, user: User.find(5), notes: "Is deaf in all animal forms. Thinks humans are noisy anyways and does her best to avoid them.")
-  @char4 = Char.create(name: "Firak Slowflame", health: 25, user: User.find(5), notes: "Patient. Poetic. Wise beyond his 15 years")
-  @char5 = Char.create(name: "Biggie Hogswaddle", health: 30, user: User.find(5), notes: "Bigs is pure of heart and dumb of mind")
-  @char6 = Char.create(name: "Rogar", health: 86, user: User.find(5), notes: "Huge friendly scaly hungry lizard person")
-  @char7 = Char.create(name: "Ash Ketchum", health: 48, user: User.find(5), notes: "Gotta catch em all!")
+  @char1 = Char.create(name: "Dirigible Wispus", health: 10, user: @user1,  notes: "Big belly. Big brain. Little nubby fingers.")
+  @char2 = Char.create(name: "Ilashi Dvorak", health: 15, user: @user2, notes: "Has nothing to say to commoners such as you.")
+  @char3 = Char.create(name: "Iggy", health: 44, user: @user5, notes: "Is deaf in all animal forms. Thinks humans are noisy anyways and does her best to avoid them.")
+  @char4 = Char.create(name: "Firak Slowflame", health: 25, user: @user5, notes: "Patient. Poetic. Wise beyond his 15 years")
+  @char5 = Char.create(name: "Biggie Hogswaddle", health: 30, user: @user5, notes: "Bigs is pure of heart and dumb of mind")
+  @char6 = Char.create(name: "Rogar", health: 86, user: @user5, notes: "Huge friendly scaly hungry lizard person")
+  @char7 = Char.create(name: "Ash Ketchum", health: 48, user: @user5, notes: "Gotta catch em all!")
 end
 
 # Create demo abilities, assigned to characters
 def make_demo_abilities
-  @ab1 = AbilitiesSet.create(str: 15, dex: 10, con: 9, int: 14, wis: 18, cha: 8, char: Char.find(1))
-  @ab2 = AbilitiesSet.create(str: 11, dex: 7, con: 14, int: 14, wis: 11, cha: 11, char: Char.find(2))
-  @ab3 = AbilitiesSet.create(str: 8, dex: 16, con: 18, int: 9, wis: 13, cha: 10, char: Char.find(3))
-  @ab4 = AbilitiesSet.create(str: 16, dex: 10, con: 13, int: 16, wis: 5, cha: 20, char: Char.find(4))
-  @ab5 = AbilitiesSet.create(str: 18, dex: 8, con: 12, int: 10, wis: 6, cha: 9, char: Char.find(5))
+  @ab1 = AbilitiesSet.create(str: 15, dex: 10, con: 9, int: 14, wis: 18, cha: 8, char: @char1)
+  @ab2 = AbilitiesSet.create(str: 11, dex: 7, con: 14, int: 14, wis: 11, cha: 11, char: @char2)
+  @ab3 = AbilitiesSet.create(str: 8, dex: 16, con: 18, int: 9, wis: 13, cha: 10, char: @char3)
+  @ab4 = AbilitiesSet.create(str: 16, dex: 10, con: 13, int: 16, wis: 5, cha: 20, char: @char4)
+  @ab5 = AbilitiesSet.create(str: 18, dex: 8, con: 12, int: 10, wis: 6, cha: 9, char: @char5)
 end
 
 def make_demo_known_spells
-  @ks1 = KnownSpell.create(char: Char.find(1), spell: Spell.find(319))
-  @ks2 = KnownSpell.create(char: Char.find(1), spell: Spell.find(88))
-  @ks3 = KnownSpell.create(char: Char.find(2), spell: Spell.find(72))
-  @ks4 = KnownSpell.create(char: Char.find(2), spell: Spell.find(100))
-  @ks5 = KnownSpell.create(char: Char.find(3), spell: Spell.find(102))
-  @ks6 = KnownSpell.create(char: Char.find(3), spell: Spell.find(219))
-  @ks7 = KnownSpell.create(char: Char.find(4), spell: Spell.find(300))
-  @ks8 = KnownSpell.create(char: Char.find(4), spell: Spell.find(12))
-  @ks9 = KnownSpell.create(char: Char.find(5), spell: Spell.find(18))
-  @ks10 = KnownSpell.create(char: Char.find(5), spell: Spell.find(56))
-  @ks11 = KnownSpell.create(char: Char.find(6), spell: Spell.find(319))
-  @ks12 = KnownSpell.create(char: Char.find(6), spell: Spell.find(88))
-  @ks13 = KnownSpell.create(char: Char.find(7), spell: Spell.find(72))
-  @ks14 = KnownSpell.create(char: Char.find(7), spell: Spell.find(100))
+  @spells = Spell.all
+  @ks1 = KnownSpell.create(char: @char1, spell: @spells[318])
+  @ks2 = KnownSpell.create(char: @char1, spell: @spells[88])
+  @ks3 = KnownSpell.create(char: @char2, spell: @spells[72])
+  @ks4 = KnownSpell.create(char: @char2, spell: @spells[100])
+  @ks5 = KnownSpell.create(char: @char3, spell: @spells[102])
+  @ks6 = KnownSpell.create(char: @char3, spell: @spells[219])
+  @ks7 = KnownSpell.create(char: @char4, spell: @spells[300])
+  @ks8 = KnownSpell.create(char: @char4, spell: @spells[12])
+  @ks9 = KnownSpell.create(char: @char5, spell: @spells[18])
+  @ks10 = KnownSpell.create(char: @char5, spell: @spells[56])
+  @ks11 = KnownSpell.create(char: @char6, spell: @spells[319])
+  @ks12 = KnownSpell.create(char: @char6, spell: @spells[88])
+  @ks13 = KnownSpell.create(char: @char7, spell: @spells[72])
+  @ks14 = KnownSpell.create(char: @char7, spell: @spells[100])
 end
 
 def make_demo_char_klasses
-  @ck1 = CharKlass.create(char: Char.find(1), klass: Klass.find(1), klass_lvl: 4)
-  @ck2 = CharKlass.create(char: Char.find(2), klass: Klass.find(2), klass_lvl: 15)
-  @ck3 = CharKlass.create(char: Char.find(3), klass: Klass.find(3), klass_lvl: 5)
-  @ck4 = CharKlass.create(char: Char.find(4), klass: Klass.find(4), klass_lvl: 5)
-  @ck5 = CharKlass.create(char: Char.find(5), klass: Klass.find(12), klass_lvl: 7)
-  @ck1 = CharKlass.create(char: Char.find(6), klass: Klass.find(1), klass_lvl: 4)
-  @ck2 = CharKlass.create(char: Char.find(7), klass: Klass.find(2), klass_lvl: 15)
+  @klasses = Klass.all
+  @ck1 = CharKlass.create(char: @char1, klass: @klasses[1], klass_lvl: 4)
+  @ck2 = CharKlass.create(char: @char2, klass: @klasses[2], klass_lvl: 15)
+  @ck3 = CharKlass.create(char: @char3, klass: @klasses[3], klass_lvl: 5)
+  @ck4 = CharKlass.create(char: @char4, klass: @klasses[4], klass_lvl: 5)
+  @ck5 = CharKlass.create(char: @char5, klass: @klasses[12], klass_lvl: 7)
+  @ck1 = CharKlass.create(char: @char6, klass: @klasses[1], klass_lvl: 4)
+  @ck2 = CharKlass.create(char: @char7, klass: @klasses[2], klass_lvl: 15)
 end
 
 # Call and create a klass, then call and create each level for that klass
