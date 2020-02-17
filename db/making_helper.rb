@@ -15,14 +15,6 @@ def join_arr(item, space='')
   end
 end
 
-def check_bool(item)
-  if item == 'no'
-    return false
-  else
-    return true
-  end
-end
-
 def select_classes(classes)
   if classes.size == 1
     return classes[0]['name']
@@ -52,9 +44,9 @@ def make_spell(spell_hash)
       range: json['range'],
       components: join_arr(json['components'], ' '),
       material: json['material'],
-      ritual: check_bool(json['ritual']),
+      ritual: json['ritual'],
       duration: json['duration'],
-      concentration: check_bool(json['concentration']),
+      concentration: json['concentration'],
       klasses: select_classes(json['classes']),
       castingtime: json['casting_time'],
       lvl: json['level'],
